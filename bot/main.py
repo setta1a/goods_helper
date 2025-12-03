@@ -4,6 +4,7 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher, F
+from aiogram.client.bot import DefaultBotProperties
 from aiogram.filters import CommandStart, Command
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, WebAppInfo
 
@@ -13,7 +14,10 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 settings = get_settings()
-bot = Bot(token=settings.bot_token, parse_mode='HTML')
+bot = Bot(
+    token=settings.bot_token,
+    default=DefaultBotProperties(parse_mode='HTML'),
+)
 dp = Dispatcher()
 
 
